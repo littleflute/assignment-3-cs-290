@@ -37,6 +37,13 @@ var check1=document.getElementById("post-text-input");
 var check2=document.getElementById("post-photo-input");
 var check3=document.getElementById("post-price-input");
 var check4=document.getElementById("post-city-input");
+// ===========================================
+var con1=document.getElementById("post-condition-new");
+var con2=document.getElementById("post-condition-excellent");
+var con3=document.getElementById("post-condition-good");
+var con4=document.getElementById("post-condition-fair");
+var con5=document.getElementById("post-condition-poor");
+
 // ==================================
 function get_post(){
   var posts=[];
@@ -108,34 +115,47 @@ function shutdownModal(){
 
 
 function check_empty(){
-  if (check1.value != ""|| check2.value != ""|| check3.value != ""|| check4.value != "") {
-          return true;
+  if (check1.value == ""|| check2.value == ""|| check3.value == ""|| check4.value == "") {
+          return false;
       }
       else{
-        return false;
+        return true;
       }
 }
 function create_new(){
+  if(!check_empty()){
+    alert("Fill out the all sections!");
+  }
+
+
+  console.log("create new");
   var photocard=document.createElement('div');
   photocard.classList.add('post');
+   var conditions;
+
+  if(con1.checked){
+    conditions=='new';
+  }
+  else if(con2.checked){
+    conditions=='excellent';
+  }
+  else if(con3.checked){
+    conditions=='good';
+  }
+  else if(con4.checked){
+    conditions=='fair';
+  }
+  else if(con5.checked){
+    conditions=='poor';
+  }
 
   photocard.setAttribute('data-price',price_in);
   photocard.setAttribute('data-city',city_in);
   photocard.setAttribute('data-condition',conditions);
 
+
   var card_text=document.createElement('div');
-  card_text.classlist.add('post-contents');
+  card_text.classList.add('post-contents');
   photocard.appendChild (card_text);
 
-
-
-
-
-
-
-
-
-  if(!check_empty()){
-    alert("Fill out the all sections!");
-  }
 }
