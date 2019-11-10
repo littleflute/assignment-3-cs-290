@@ -1,4 +1,4 @@
-# Assignment 3
+# Assignment 3 [v0.0.2](https://github.com/littleflute/assignment-3-cs-290/edit/master/README.md) [i.html](i.html)
 
 **Assignment and Code Blog Entry due at 11:59pm on Monday 11/11/2019**
 
