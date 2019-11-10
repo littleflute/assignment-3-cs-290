@@ -17,7 +17,8 @@
 
 
 
- var text=document.getElementById('filter-text');
+ var text=document.getElementById('filter-text').value.replace(/[!"#$%&\\'()\*+,\-\.\/:;<=>?@\[\\\]\^_`{|}~]/g, '')
+  .toLowerCase();
  var min_price=document.getElementById('filter-min-price').value;
  var max_price=document.getElementById('filter-max-price').value;
  var get_city=document.getElementById('filter-city').value;
@@ -37,25 +38,27 @@ var check2=document.getElementById("post-photo-input");
 var check3=document.getElementById("post-price-input");
 var check4=document.getElementById("post-city-input");
 // ==================================
+function get_post(){
   var posts=[];
   var inside=document.getElementsByClassName('post');
   for (var i = 0; i < inside.childElementCount; i++) {
     posts.push(inside[i]);//push elements into the post array
   }
-
+  return posts;
+}
 
 var input= document.querySelector('.filter-container').getElementsByTagName('input');
 
-var text_content=0;
-text.addEventListener('change',function listerner(event){
-  text_content=event.currentTarget.value;
-  text_content=text_content.replace(/[!"#$%&\\'()\*+,\-\.\/:;<=>?@\[\\\]\^_`{|}~]/g, '')
-  console.log(text_content);
-  event.stopPropagation();
-});
 
+var a=5;
 function filter_text(){
-
+  var text_content=0;
+  text.addEventListener('change',function listerner(event){
+    text_content=event.currentTarget.value;
+    text_content=text_content.replace(/[!"#$%&\\'()\*+,\-\.\/:;<=>?@\[\\\]\^_`{|}~]/g, '')
+    console.log(text_content);
+    event.stopPropagation();
+  });
 }
 
 function filter_price(){
@@ -63,7 +66,8 @@ function filter_price(){
 }
 
 function filter_city(){
-
+  console.log('city out')
+   var city;
 
  }
 function filter_condition(){
@@ -117,11 +121,13 @@ function create_new(){
 
   photocard.setAttribute('data-price',price_in);
   photocard.setAttribute('data-city',city_in);
-  photocard.setAttribute('data-condition'get_condition);
+  photocard.setAttribute('data-condition',conditions);
 
   var card_text=document.createElement('div');
   card_text.classlist.add('post-contents');
   photocard.appendChild (card_text);
+
+
 
 
 
